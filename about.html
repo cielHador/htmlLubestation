@@ -3,190 +3,394 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Lubrication Station</title>
+<title>About | Lubrication Station</title>
 <style>
   :root {
+    --navy: #0f1b2d;
+    --navy-light: #16243b;
     --yellow: #f5b800;
-    --dark: #1a1a1a;
-    --gray: #555;
-    --light-bg: #faf9f6;
-    --border: #e6e2d8;
+    --ink: #16243b;
+    --gray: #5b6472;
+    --line: #e6e8ec;
+    --cream: #f8f7f4;
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    color: var(--dark);
-    background: var(--light-bg);
-    line-height: 1.6;
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .hero {
-    background: var(--dark);
+  a { color: inherit; text-decoration: none; }
+
+  /* Header */
+  header {
+    background: var(--navy);
     color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-    border-bottom: 6px solid var(--yellow);
+    padding: 16px 32px;
+  }
+  .nav-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+  .brand-mark {
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 0.85em;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  nav {
+    display: flex;
+    gap: 26px;
+    font-size: 0.92em;
+  }
+  nav a {
+    color: #c9d0da;
+    transition: color 0.15s;
+  }
+  nav a:hover, nav a.active { color: #fff; }
+  .phones {
+    font-size: 0.82em;
+    color: #9aa4b2;
+    text-align: right;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 64px 32px 76px;
+    text-align: left;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow {
+    color: var(--yellow);
+    font-weight: 600;
+    font-size: 0.95em;
   }
   .hero h1 {
-    margin: 0 0 10px;
-    font-size: 2.4em;
-    letter-spacing: 0.5px;
+    font-size: 2.6em;
+    margin-top: 10px;
+    max-width: 12ch;
+    font-weight: 700;
+    line-height: 1.15;
   }
   .hero p {
-    margin: 0;
-    font-size: 1.1em;
-    color: #d9d9d9;
+    margin-top: 16px;
+    max-width: 46ch;
+    color: #c9d0da;
+    font-size: 1.08em;
   }
-  .container {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 40px 20px 60px;
-  }
-  section {
+
+  /* Stats strip */
+  .stats {
+    max-width: 1100px;
+    margin: -36px auto 0;
     background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 30px 35px;
-    margin-bottom: 25px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 30px rgba(15,27,45,0.08);
+    position: relative;
+    z-index: 2;
   }
-  h2 {
-    color: var(--dark);
-    border-left: 6px solid var(--yellow);
-    padding-left: 14px;
-    margin-top: 0;
-    font-size: 1.5em;
-  }
-  ul {
-    padding-left: 22px;
-  }
-  li { margin-bottom: 6px; }
-  .locations {
-    list-style: none;
-    padding-left: 0;
-  }
-  .locations li {
-    background: var(--light-bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-  }
-  th, td {
-    text-align: left;
-    padding: 12px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  th {
-    background: var(--dark);
-    color: #fff;
-  }
-  tr:nth-child(even) { background: var(--light-bg); }
-  .highlight {
-    background: #fff8e1;
-    border-left: 6px solid var(--yellow);
-    padding: 18px 22px;
-    border-radius: 6px;
-    font-weight: 500;
-  }
-  .hours {
+  .stat {
+    flex: 1;
+    min-width: 140px;
     text-align: center;
-    font-weight: 600;
-    margin-top: 15px;
+    padding: 26px 10px;
+    border-right: 1px solid var(--line);
   }
-  footer {
-    text-align: center;
-    padding: 25px;
+  .stat:last-child { border-right: none; }
+  .stat .num {
+    font-size: 1.7em;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .stat .label {
     color: var(--gray);
-    font-size: 0.9em;
+    font-size: 0.85em;
+    margin-top: 4px;
   }
-  a { color: #a67c00; }
+
+  /* Sections */
+  main { max-width: 1100px; margin: 0 auto; padding: 70px 32px; }
+  section { margin-bottom: 72px; }
+  section:last-child { margin-bottom: 0; }
+  .section-tag {
+    color: var(--yellow);
+    font-weight: 600;
+    font-size: 0.92em;
+  }
+  .section-title {
+    font-size: 1.7em;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    max-width: 22ch;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .two-col p { color: var(--gray); margin-bottom: 14px; max-width: 58ch; }
+  .locations-mini {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .locations-mini h3 {
+    font-size: 1em;
+    margin-bottom: 14px;
+  }
+  .locations-mini ul { list-style: none; }
+  .locations-mini li {
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95em;
+    color: var(--ink);
+  }
+  .locations-mini li:first-of-type { border-top: none; }
+
+  /* Services grid */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .card .idx {
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 0.85em;
+  }
+  .card h3 { margin-top: 10px; font-size: 1.1em; }
+  .card p { color: var(--gray); margin-top: 8px; font-size: 0.95em; }
+
+  /* Brand strip */
+  .brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .brand-chip {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.88em;
+    color: var(--gray);
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 16px;
+    padding: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .callout h2 { font-size: 1.5em; max-width: 26ch; }
+  .callout p { color: #c9d0da; margin-top: 8px; max-width: 40ch; }
+  .btn {
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 700;
+    padding: 13px 26px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* Locations cards */
+  .loc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .loc-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .loc-card h3 { font-size: 1.05em; margin-bottom: 8px; }
+  .loc-card p { color: var(--gray); font-size: 0.92em; margin-bottom: 10px; }
+  .loc-card a.phone {
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.95em;
+  }
+
+  footer {
+    background: var(--navy);
+    color: #9aa4b2;
+    padding: 40px 32px;
+    font-size: 0.88em;
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    nav { display: none; }
+    .phones { display: none; }
+    .two-col, .grid-3, .loc-grid { grid-template-columns: 1fr; }
+    .stat { flex: 1 0 50%; }
+  }
 </style>
 </head>
 <body>
 
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <span class="brand-mark">LS</span>
+      <span>Lubrication Station</span>
+    </div>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#coupons">Coupons</a>
+      <a href="index.html#rewards">Rewards card</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="phones">
+      Circle Drive: (306) 249-5823<br>
+      8th Street: (306) 956-3278 &nbsp;·&nbsp; 22nd Street: (306) 249-0100
+    </div>
+  </div>
+</header>
+
 <div class="hero">
-  <h1>Behind the Big Yellow Doors</h1>
-  <p>Saskatoon's premier quick lube since 1995</p>
+  <div class="hero-inner">
+    <div class="eyebrow">Our story</div>
+    <h1>Behind the big yellow doors since 1995.</h1>
+    <p>Independently owned and operated, we've been Saskatoon's go-to quick lube for three decades &mdash; three locations, one standard of service.</p>
+  </div>
 </div>
 
-<div class="container">
-
-  <section>
-    <h2>Our Story</h2>
-    <p>Since 1995, Lubrication Station has been keeping Saskatoon on the road. What started out as "10 Minute Oil Change" has grown into three locations across the city and Saskatoon's go-to name for fast, reliable quick-lube service.</p>
-    <p>You'll find us behind the big yellow doors at:</p>
-    <ul class="locations">
-      <li>614 Circle Drive East</li>
-      <li>1-3401 8th Street East</li>
-      <li>420-22nd Street West</li>
-    </ul>
-    <p>We're independently owned and operated, and we serve drivers throughout Saskatoon, Warman, Martensville, Clavet, and the surrounding area &mdash; no appointment needed, Monday through Saturday, 8am to 6pm.</p>
-  </section>
-
-  <section>
-    <h2>New Ownership, Decades of Experience</h2>
-    <p>In March 2020, Don Lepp &mdash; with more than 30 years in the automotive business &mdash; purchased Lubrication Station. He brought with him a team that has spent years maintaining and servicing everything from daily commuters to fleet vehicles, import and domestic alike.</p>
-  </section>
-
-  <section>
-    <h2>What We Do</h2>
-    <ul>
-      <li>Oil changes</li>
-      <li>Transfer case services</li>
-      <li>Front and rear differential services</li>
-      <li>Transmission services</li>
-      <li>Cooling system services</li>
-      <li>Fuel filter replacements</li>
-    </ul>
-    <p>We understand what makes import and domestic vehicles tick, and we know that using the right product matters just as much as the service itself. That's why we work with trusted names like <strong>Shell, Quaker State, Pennzoil, AMSOIL, Royal Purple, ACDelco, and Wynn's</strong> &mdash; including Wynn's flushes that come backed by a warranty to protect your investment.</p>
-    <p>We're also proud to service fleet vehicles, helping local businesses stay on the road without unexpected breakdowns.</p>
-  </section>
-
-  <section>
-    <h2>Why Drivers Choose Us</h2>
-    <p class="highlight">At Lubrication Station, you get a semi-synthetic blend oil change for the price of a conventional one &mdash; and we consistently offer the lowest price on a basic oil change in Saskatoon.</p>
-    <p>But it's not just about the oil. It's about people. Our team's knowledge and genuine care for your vehicle are what keep customers coming back.</p>
-    <p><strong>Our mission is simple: unparalleled service, every visit.</strong> We pledge our best effort to make your experience both beneficial and enjoyable &mdash; try us once, and we're confident you'll be back.</p>
-  </section>
-
-  <section>
-    <h2>Visit Us</h2>
-    <p>Ready for your next oil change or automotive service? Stop by one of our three Saskatoon locations!:</p>
-    <table>
-      <tr>
-        <th>Location</th>
-        <th>Address</th>
-        <th>Phone</th>
-      </tr>
-      <tr>
-        <td>Circle Drive</td>
-        <td>614 Circle Drive East, Saskatoon, SK S7K 0T9</td>
-        <td><a href="tel:+13062495823">(306) 249-5823</a></td>
-      </tr>
-      <tr>
-        <td>8th Street</td>
-        <td>1-3401 8th Street East, Saskatoon, SK S7H 0W5</td>
-        <td><a href="tel:+13069563278">(306) 956-3278</a></td>
-      </tr>
-      <tr>
-        <td>22nd Street West</td>
-        <td>420-22nd Street West, Saskatoon, SK S7M 0R4</td>
-        <td><a href="tel:+13062490100">(306) 249-0100</a></td>
-      </tr>
-    </table>
-    <p class="hours">Hours: Monday &ndash; Saturday, 8:00 AM &ndash; 6:00 PM (Closed Sundays)</p>
-  </section>
-
+<div class="stats">
+  <div class="stat"><div class="num">1995</div><div class="label">Founded</div></div>
+  <div class="stat"><div class="num">3</div><div class="label">Locations</div></div>
+  <div class="stat"><div class="num">30+</div><div class="label">Years in the trade</div></div>
+  <div class="stat"><div class="num">~15 min</div><div class="label">Avg. visit</div></div>
 </div>
+
+<main>
+
+  <section class="two-col">
+    <div>
+      <div class="section-tag">How we got here</div>
+      <h2 class="section-title">From "10 Minute Oil Change" to Saskatoon's premier quick lube</h2>
+      <p>Lubrication Station started under the name "10 Minute Oil Change" and has grown into three independently owned and operated locations across the city.</p>
+      <p>In March 2020, Don Lepp &mdash; with more than 30 years in the automotive business &mdash; took over Lubrication Station. He brought a staff with years of experience maintaining and servicing a wide range of vehicles, and an understanding of what import and domestic engines need to run right.</p>
+      <p>We're proud to service fleet vehicles too, keeping local businesses on the road without unexpected breakdowns.</p>
+    </div>
+    <div class="locations-mini">
+      <h3>Find us behind the big yellow doors</h3>
+      <ul>
+        <li>614 Circle Drive East</li>
+        <li>1-3401 8th Street East</li>
+        <li>420-22nd Street West</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">What we do</div>
+    <h2 class="section-title">Everything under the hood, done right</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="idx">01</div>
+        <h3>Oil changes</h3>
+        <p>Conventional, semi-synthetic, or full synthetic &mdash; and a semi-synthetic blend for the price of conventional.</p>
+      </div>
+      <div class="card">
+        <div class="idx">02</div>
+        <h3>Fluid services</h3>
+        <p>Transmission, cooling system, and Wynn's warrantied flushes, plus transfer case and differential service.</p>
+      </div>
+      <div class="card">
+        <div class="idx">03</div>
+        <h3>Filters &amp; maintenance</h3>
+        <p>Fuel filter replacement and preventive maintenance to catch small issues before they're big ones.</p>
+      </div>
+    </div>
+    <div class="brands">
+      <span class="brand-chip">Shell</span>
+      <span class="brand-chip">Quaker State</span>
+      <span class="brand-chip">Pennzoil</span>
+      <span class="brand-chip">AMSOIL</span>
+      <span class="brand-chip">Royal Purple</span>
+      <span class="brand-chip">ACDelco</span>
+      <span class="brand-chip">Wynn's</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="callout">
+      <div>
+        <h2>It's all about people.</h2>
+        <p>Our mission is unparalleled service, every time. We consistently offer the lowest price basic oil change in Saskatoon &mdash; try us once, and we're confident you'll be back.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">Find us</div>
+    <h2 class="section-title">Three Saskatoon locations</h2>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <h3>Circle Drive</h3>
+        <p>614 Circle Drive East, Saskatoon, SK S7K 0T9</p>
+        <a class="phone" href="tel:+13062495823">(306) 249-5823</a>
+      </div>
+      <div class="loc-card">
+        <h3>8th Street</h3>
+        <p>1-3401 8th Street East, Saskatoon, SK S7H 0W5</p>
+        <a class="phone" href="tel:+13069563278">(306) 956-3278</a>
+      </div>
+      <div class="loc-card">
+        <h3>22nd Street</h3>
+        <p>420-22nd Street West, Saskatoon, SK S7M 0R4</p>
+        <a class="phone" href="tel:+13062490100">(306) 249-0100</a>
+      </div>
+    </div>
+    <p style="margin-top:18px; color:var(--gray); font-size:0.95em;">Open Monday &ndash; Saturday, 8am to 6pm &middot; no appointment needed.</p>
+  </section>
+
+</main>
 
 <footer>
-  &copy; Lubrication Station &mdash; Saskatoon, SK
+  Copyright &copy; 2007&ndash;2026 Lubrication Station &nbsp;&middot;&nbsp; Terms of use &middot; Privacy &middot; Accessibility &middot; Sitemap
 </footer>
 
 </body>
