@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coupons | Lubrication Station | Saskatoon, SK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2124;--cream:#F6F4EF;--yellow:#F2A900;--yellow-deep:#C98600;
+    --steel:#48555F;--rust:#C1440E;--line:#DAD6CB;--card:#FFFFFF;--radius:6px;
+    --navy:#0F1D3A;--navy-deep:#0A1428;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Public Sans', sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Barlow Condensed', sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;line-height:1.05;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  header{background:var(--ink);color:var(--cream);}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo .mark{width:44px;height:44px;background:var(--yellow);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black', sans-serif;color:var(--ink);font-size:20px;}
+  .logo .name{font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:0.02em;}
+  .logo .name span{color:var(--yellow);}
+  nav{display:flex;gap:32px;}
+  nav a{font-size:14px;font-weight:500;letter-spacing:0.03em;text-transform:uppercase;opacity:0.85;padding:6px 0;border-bottom:2px solid transparent;}
+  nav a:hover, nav a.active{opacity:1;border-color:var(--yellow);}
+  .header-strip{display:flex;gap:36px;padding:12px 0;font-size:13px;color:#C9CBCC;flex-wrap:wrap;}
+  .header-strip strong{color:var(--cream);}
+
+  .page-hero{background:var(--ink);color:var(--cream);padding:52px 0 60px;}
+  .page-hero .eyebrow{color:var(--yellow);font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+  .page-hero h1{font-size:52px;color:var(--cream);}
+  .page-hero p{font-size:16px;color:#D9D6CC;max-width:52ch;margin-top:16px;}
+
+  .section{padding:64px 0;}
+  .section-head{max-width:60ch;margin-bottom:36px;}
+  .section-head .eyebrow{color:var(--rust);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+  .section-head h2{font-size:32px;}
+
+  /* Featured coupon banner, styled after the provided creative */
+  .coupon-banner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--navy);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(15,29,58,0.25);
+  }
+  .coupon-banner .art{
+    background:linear-gradient(135deg, #2b2620 0%, #171512 100%);
+    min-height:320px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:24px;
+  }
+  .coupon-banner .art .drop{
+    width:130px;height:130px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #ffcf4d, var(--yellow-deep) 70%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 60px rgba(242,169,0,0.25);
+  }
+  .coupon-banner .art .drop span{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    color:var(--ink);
+    font-size:15px;
+    text-align:center;
+    line-height:1.1;
+    text-transform:uppercase;
+  }
+  .coupon-banner .copy{
+    padding:40px 44px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    color:var(--cream);
+  }
+  .coupon-banner .copy .eyebrow{color:var(--yellow);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;}
+  .coupon-banner .copy h2{font-size:28px;color:var(--cream);margin-bottom:18px;}
+  .coupon-banner .copy .price{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:56px;
+    color:var(--yellow);
+    line-height:1;
+    margin-bottom:14px;
+  }
+  .coupon-banner .copy .fine{font-size:13px;color:#B7BFCC;margin-bottom:26px;}
+  .coupon-banner .copy .cta{
+    background:var(--yellow);
+    color:var(--ink);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:14px 24px;
+    border-radius:var(--radius);
+    display:inline-block;
+    width:fit-content;
+  }
+  .coupon-banner .copy .cta:hover{background:#ffbb1a;}
+
+  .fine-print{margin-top:44px;border-top:1px solid var(--line);padding-top:24px;font-size:13px;color:var(--steel);}
+  .fine-print h4{font-family:'Barlow Condensed', sans-serif;font-size:16px;text-transform:uppercase;margin-bottom:10px;color:var(--ink);}
+  .fine-print ul{margin:0;padding-left:18px;}
+  .fine-print li{margin-bottom:6px;}
+
+  .cta-band{background:var(--yellow);color:var(--ink);padding:48px 0;text-align:center;}
+  .cta-band h2{font-size:32px;margin-bottom:12px;}
+  .cta-band p{font-size:15px;margin-bottom:22px;color:#4A3B00;}
+  .btn-primary{background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:var(--radius);font-weight:600;font-size:15px;display:inline-block;}
+  .btn-primary:hover{background:#000;}
+
+  footer{background:var(--ink);color:#B8B5AA;padding:40px 0 24px;font-size:14px;}
+  footer h4{color:var(--cream);font-family:'Barlow Condensed', sans-serif;text-transform:uppercase;font-size:15px;font-weight:600;margin:0 0 14px;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer li{margin-bottom:8px;}
+  footer a:hover{color:var(--yellow);}
+  .foot-bottom{padding-top:20px;margin-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;font-size:13px;color:#8A8880;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    nav{display:none;}
+    .page-hero h1{font-size:38px;}
+    .coupon-banner{grid-template-columns:1fr;}
+    .coupon-banner .copy{padding:32px 28px;}
+    .coupon-banner .copy .price{font-size:44px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="logo">
+      <div class="mark">LS</div>
+      <div class="name">Lubrication <span>Station</span></div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="coupons.html" class="active">Coupons</a>
+      <a href="rewards.html">Rewards card</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap header-strip">
+    <span><strong>Circle Drive:</strong> (306) 249-5823</span>
+    <span><strong>8th Street:</strong> (306) 956-3278</span>
+    <span><strong>22nd Street:</strong> (306) 249-0100</span>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Save at any of our three bays</div>
+    <h1>Current coupons</h1>
+    <p>Show this on your phone at checkout. No appointment needed — just pull in and mention the offer.</p>
+  </div>
+</section>
+
+<section class="section" id="coupons">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Featured offer</div>
+      <h2>This month's coupon</h2>
+    </div>
+
+    <div class="coupon-banner">
+      <div class="art">
+        <div class="drop"><span>Semi<br>synthetic<br>oil</span></div>
+      </div>
+      <div class="copy">
+        <div class="eyebrow">Semi synthetic oil for the price of conventional</div>
+        <h2>Oil change special</h2>
+        <div class="price">$73.95</div>
+        <div class="fine">*Basic oil change only. Fluid top up at an additional charge.</div>
+        <a href="contact.html" class="cta">Click here for details &raquo;</a>
+      </div>
+    </div>
+
+    <div class="fine-print">
+      <h4>Coupon terms</h4>
+      <ul>
+        <li>Covers a basic oil change only; fluid top-ups are billed at an additional charge.</li>
+        <li>Cannot be combined with the Major Services Rewards Card or any other offer.</li>
+        <li>Valid at all three Saskatoon locations during regular business hours.</li>
+        <li>Lubrication Station reserves the right to modify or discontinue this offer at any time.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Want to earn on every visit too?</h2>
+    <p>Ask about the Major Services Rewards Card — your tenth major service is free.</p>
+    <a href="rewards.html" class="btn-primary">See the rewards card</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;">
+      <div>
+        <h4>Lubrication Station</h4>
+        <p style="max-width:38ch;color:#B8B5AA;">Saskatoon's premier quick lube centres, independently owned and operated since 1995.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coupons.html">Coupons</a></li>
+          <li><a href="rewards.html">Rewards card</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Contact form</a></li>
+          <li><a href="tel:+13062495823">(306) 249-5823</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Copyright &copy; 2007–2026 Lubrication Station</span>
+      <span>Terms of use &middot; Privacy &middot; Accessibility &middot; Sitemap</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
