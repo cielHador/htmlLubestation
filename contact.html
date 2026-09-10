@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Lubrication Station | Saskatoon, SK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2124;--cream:#F6F4EF;--yellow:#F2A900;--yellow-deep:#C98600;
+    --steel:#48555F;--rust:#C1440E;--line:#DAD6CB;--card:#FFFFFF;--radius:6px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Public Sans', sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Barlow Condensed', sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;line-height:1.05;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  header{background:var(--ink);color:var(--cream);}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo .mark{width:44px;height:44px;background:var(--yellow);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black', sans-serif;color:var(--ink);font-size:20px;}
+  .logo .name{font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:0.02em;}
+  .logo .name span{color:var(--yellow);}
+  nav{display:flex;gap:32px;}
+  nav a{font-size:14px;font-weight:500;letter-spacing:0.03em;text-transform:uppercase;opacity:0.85;padding:6px 0;border-bottom:2px solid transparent;}
+  nav a:hover, nav a.active{opacity:1;border-color:var(--yellow);}
+  .header-strip{display:flex;gap:36px;padding:12px 0;font-size:13px;color:#C9CBCC;flex-wrap:wrap;}
+  .header-strip strong{color:var(--cream);}
+
+  .page-hero{background:var(--ink);color:var(--cream);padding:52px 0 60px;}
+  .page-hero .eyebrow{color:var(--yellow);font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+  .page-hero h1{font-size:52px;color:var(--cream);}
+  .page-hero p{font-size:16px;color:#D9D6CC;max-width:52ch;margin-top:16px;}
+
+  .section{padding:60px 0;}
+  .contact-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:flex-start;}
+
+  /* Form */
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:32px;}
+  .form-card h2{font-size:26px;margin-bottom:6px;}
+  .form-card .sub{font-size:14px;color:var(--steel);margin-bottom:24px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .field label{font-size:13px;font-weight:600;color:var(--ink);}
+  .field label .opt{font-weight:400;color:#8A8880;text-transform:none;}
+  .field input, .field select, .field textarea{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:11px 12px;
+    font-family:'Public Sans', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--cream);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--yellow-deep);
+    outline-offset:1px;
+    background:#fff;
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .consent{display:flex;align-items:flex-start;gap:10px;margin:18px 0;font-size:13px;color:var(--steel);}
+  .consent input{margin-top:3px;}
+  .submit-btn{
+    background:var(--yellow);
+    color:var(--ink);
+    font-weight:600;
+    font-size:15px;
+    padding:14px 28px;
+    border-radius:var(--radius);
+    border:none;
+    cursor:pointer;
+    font-family:'Public Sans', sans-serif;
+  }
+  .submit-btn:hover{background:#ffbb1a;}
+  .form-note{font-size:12px;color:#8A8880;margin-top:14px;}
+
+  /* Side info */
+  .info-block{margin-bottom:32px;}
+  .info-block h3{font-size:20px;margin-bottom:14px;}
+  .loc-mini{border-bottom:1px solid var(--line);padding:14px 0;}
+  .loc-mini:last-child{border-bottom:none;}
+  .loc-mini .name{font-weight:600;font-size:15px;margin-bottom:2px;}
+  .loc-mini .addr{font-size:13px;color:var(--steel);margin-bottom:4px;}
+  .loc-mini a.phone{font-size:13px;font-weight:600;color:var(--rust);}
+  .hours-box{background:var(--ink);color:var(--cream);border-radius:8px;padding:22px;}
+  .hours-box h3{color:var(--cream);font-size:18px;margin-bottom:12px;}
+  .hours-box .row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#D9D6CC;}
+  .hours-box .row:last-child{border-bottom:none;}
+  .hours-box .row span:last-child{color:var(--yellow);font-weight:600;}
+
+  footer{background:var(--ink);color:#B8B5AA;padding:40px 0 24px;font-size:14px;}
+  footer h4{color:var(--cream);font-family:'Barlow Condensed', sans-serif;text-transform:uppercase;font-size:15px;font-weight:600;margin:0 0 14px;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer li{margin-bottom:8px;}
+  footer a:hover{color:var(--yellow);}
+  .foot-bottom{padding-top:20px;margin-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;font-size:13px;color:#8A8880;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    nav{display:none;}
+    .page-hero h1{font-size:38px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="logo">
+      <div class="mark">LS</div>
+      <div class="name">Lubrication <span>Station</span></div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="coupons.html">Coupons</a>
+      <a href="rewards.html">Rewards card</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap header-strip">
+    <span><strong>Circle Drive:</strong> (306) 249-5823</span>
+    <span><strong>8th Street:</strong> (306) 956-3278</span>
+    <span><strong>22nd Street:</strong> (306) 249-0100</span>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Get in touch</div>
+    <h1>Contact us</h1>
+    <p>Questions about a service, a coupon, or your rewards card? Send us a note and a team member will get back to you within one business day.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+
+    <div class="form-card">
+      <h2>Send a message</h2>
+      <p class="sub">Fields marked required must be filled in before submitting.</p>
+
+      <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='block'; this.reset();">
+        <div class="field-row">
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+          <div class="field">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last-name" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="location">Which location is this about?</label>
+          <select id="location" name="location">
+            <option value="">No specific location</option>
+            <option value="circle-drive">Circle Drive</option>
+            <option value="8th-street">8th Street</option>
+            <option value="22nd-street">22nd Street</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="reason">What's this about?</label>
+          <select id="reason" name="reason" required>
+            <option value="">Select a topic</option>
+            <option value="service-question">Service question</option>
+            <option value="rewards-card">Rewards card</option>
+            <option value="coupon">Coupon or offer</option>
+            <option value="feedback">Feedback or review</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us a bit about what you need..." required></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to be contacted by Lubrication Station about my message.</label>
+        </div>
+
+        <button type="submit" class="submit-btn">Send message</button>
+        <div class="form-note">We typically reply within one business day, Monday through Saturday.</div>
+        <p id="form-success" style="display:none;margin-top:16px;font-size:14px;font-weight:600;color:#3F7D45;">Thanks — your message has been sent. We'll be in touch soon.</p>
+      </form>
+    </div>
+
+    <div>
+      <div class="info-block">
+        <h3>Our locations</h3>
+        <div class="loc-mini">
+          <div class="name">Circle Drive</div>
+          <div class="addr">614 Circle Drive East, Saskatoon, SK S7K 0T9</div>
+          <a class="phone" href="tel:+13062495823">(306) 249-5823</a>
+        </div>
+        <div class="loc-mini">
+          <div class="name">8th Street</div>
+          <div class="addr">1-3401 8th Street East, Saskatoon, SK S7H 0W5</div>
+          <a class="phone" href="tel:+13069563278">(306) 956-3278</a>
+        </div>
+        <div class="loc-mini">
+          <div class="name">22nd Street</div>
+          <div class="addr">420-22nd Street West, Saskatoon, SK S7M 0R4</div>
+          <a class="phone" href="tel:+13062490100">(306) 249-0100</a>
+        </div>
+      </div>
+
+      <div class="hours-box">
+        <h3>Hours</h3>
+        <div class="row"><span>Monday – Friday</span><span>8am – 6pm</span></div>
+        <div class="row"><span>Saturday</span><span>8am – 6pm</span></div>
+        <div class="row"><span>Sunday</span><span>Closed</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;">
+      <div>
+        <h4>Lubrication Station</h4>
+        <p style="max-width:38ch;color:#B8B5AA;">Saskatoon's premier quick lube centres, independently owned and operated since 1995.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="coupons.html">Coupons</a></li>
+          <li><a href="rewards.html">Rewards card</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Contact form</a></li>
+          <li><a href="tel:+13062495823">(306) 249-5823</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Copyright &copy; 2007–2026 Lubrication Station</span>
+      <span>Terms of use &middot; Privacy &middot; Accessibility &middot; Sitemap</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
